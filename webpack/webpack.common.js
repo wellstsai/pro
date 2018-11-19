@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
   entry: './src/client/index.js',
@@ -22,7 +23,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpg|svg)$/i,
         use: [
           'file-loader',
           {
@@ -42,6 +43,7 @@ module.exports = {
       template: './src/client/index.html',
       filename: './index.html'
     }),
+    new WriteFilePlugin(),
     new CopyWebpackPlugin([
       {
         from: 'src/assets',
