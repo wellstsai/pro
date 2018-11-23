@@ -42,23 +42,23 @@ export const createScene = (engine, canvas) => {
   // Create a built-in "ground" shape.
   // const ground = BABYLON.MeshBuilder.CreateGround('ground1', {height:6, width:6, subdivisions: 2}, scene);
 
-  // const skybox = BABYLON.Mesh.CreateBox('skyBox', 1000.0, scene);
-  // const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', scene);
-  // skyboxMaterial.backFaceCulling = false;
-  // skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/skybox/TropicalSunnyDay', scene);
-  // skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-  // skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
-  // skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
-  // skyboxMaterial.disableLighting = true;
-  // skybox.material = skyboxMaterial;
-  // skybox.infiniteDistance = true;
-  // skybox.renderingGroupId = 0;
+  const skybox = BABYLON.Mesh.CreateBox('skyBox', 1000.0, scene);
+  const skyboxMaterial = new BABYLON.StandardMaterial('skyBox', scene);
+  skyboxMaterial.backFaceCulling = false;
+  skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture('assets/skybox/TropicalSunnyDay/TropicalSunnyDay', scene);
+  skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+  skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+  skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+  skyboxMaterial.disableLighting = true;
+  skybox.material = skyboxMaterial;
+  skybox.infiniteDistance = true;
+  skybox.renderingGroupId = 0;
 
 
 
-  var box = BABYLON.Mesh.CreateBox('SkyBox', 1000, scene, false, BABYLON.Mesh.BACKSIDE);
-  box.material = new BABYLON.SkyMaterial('sky', scene);
-  box.material.inclination = -0.35;
+  // var box = BABYLON.Mesh.CreateBox('SkyBox', 1000, scene, false, BABYLON.Mesh.BACKSIDE);
+  // box.material = new BABYLON.SkyMaterial('sky', scene);
+  // box.material.inclination = -0.35;
 
   // var ground = BABYLON.MeshBuilder.CreateGround('ground', {}, scene); //default ground
 

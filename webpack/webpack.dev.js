@@ -22,6 +22,7 @@ module.exports = merge(common, {
   },
   devServer: {
     hot: true,
+    compress: true,
     contentBase: '/dist',
   }
 });
