@@ -68,6 +68,44 @@ export const createScene = (engine, canvas) => {
   // var skybox = BABYLON.Mesh.CreateBox('skyBox', 1000.0, scene);
   // skybox.material = skyboxMaterial;
 
+
+
+  // create maze
+  const wallSizeFactor = 1.8;
+  const wall = BABYLON.Mesh.CreateBox('plane', wallSizeFactor, scene); // this wall is root to make instances off of
+  wall.checkCollisions = true;
+  wall.scaling.x = 1;
+  wall.scaling.y = 10;
+  wall.scaling.z = 1;
+  wall.material = new BABYLON.StandardMaterial('texture1', scene);
+  wall.material.emissiveTexture = new BABYLON.Texture('assets/tron1.jpg', scene);
+  wall.setEnabled(false); // this removes root mesh
+  // 1 is wall
+  const maze = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+
+  maze.forEach((row, i) => {
+    row.forEach((val, j) => {
+      if (val === 1) {
+        const wallInstance = wall.createInstance(`${i}${j}`);
+        wallInstance.position.y = 0.9;
+        wallInstance.position.x = i * wallSizeFactor;
+        wallInstance.position.z = j * wallSizeFactor;
+        wallInstance.checkCollisions = true;
+      }
+    });
+  });
+
   // Return the created scene.
   return scene;
 };
